@@ -1,5 +1,5 @@
 <?php
-require_once ("inc/YetiPage.inc");
+require_once ("inc/web_include.inc");
 /**
  * The main index file
  * 
@@ -11,6 +11,7 @@ require_once ("inc/YetiPage.inc");
  * @subpackage Core
  * 
  */
+
 /* 
  * We do two things here:
  * 1) Create our Yeti Page, which will bring all our Yeti awesomeness into context
@@ -24,8 +25,9 @@ require_once ("inc/YetiPage.inc");
  {
     function __construct()
     {
-        global $YETI_CONTEXT;
-        parent::__construct($YETI_CONTEXT["CONFIG"]["PAGES"]["INDEX"]);
+        $this->loadConfig();
+        parent::__construct($GLOBALS["__YETI_CONTEXT"]["__WEB"]["__PAGES"]
+                ["INDEX"]);
     }
  }
  

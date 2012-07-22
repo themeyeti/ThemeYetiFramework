@@ -21,16 +21,16 @@ require_once ("inc/web_include.inc");
  * The Yeti Index page provides everything needed to load the index template
  *
  */
- class YetiIndexPage extends YetiPage
+ class Yeti404Page extends YetiPage
  {
     function __construct()
     {
         $this->loadConfig();
-        parent::__construct($GLOBALS["__YETI_CONFIG"]["__WEB"]["__PAGES"]
-                ["INDEX"], $GLOBALS["__YETI_CONFIG"]["__WEB"]);
+        parent::__construct($GLOBALS["__YETI_CONTEXT"]["__WEB"]["__PAGES"]
+                ["404"]);
     }
  }
  
  // Let's render it!
-$oPage = new YetiIndexPage();
+$oPage = new Yeti404Page();
 $oPage->render();

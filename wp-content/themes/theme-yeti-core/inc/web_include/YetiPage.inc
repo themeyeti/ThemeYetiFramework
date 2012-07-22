@@ -5,19 +5,17 @@
 
 class YetiPage extends YetiCore
 {
-    protected $m_PageType;
-    protected $m_PageFileLocation;
+    protected $m_BootstrapPageName;
     
     /**
      * Construct the yeti page, passing configuration by reference to be smart.
      * @param array $aPageConfig
      */
-    function __construct(&$aPageConfig)
+    function __construct(&$aPageConfig, &$aWebConfig)
     {
-        $this->m_PageType = $aPageConfig["PageType"];
-        $this->m_PageFileLocation = $aPageConfig["FileName"];
-        
-        $GLOBALS["__PAGE_CONTEXT"] = $aPageConfig;
+        $this->m_BootstrapPageName = $aWebConfig["BootstrapPageLocation"];
+        $GLOBALS["__PAGE_CONFIG"] = &$aPageConfig;
+        $GLOBALS["__WEB_CONFIG"] = &$aWebConfig;
         parent::__construct();
     }
     
@@ -26,7 +24,7 @@ class YetiPage extends YetiCore
      */
     public function render()
     {
-        $this->renderFile("pages/" . $this->m_PageType . "/" . $this->m_PageFileLocation);
+        $this->renderFile($this->m_BootstrapPageName);
     }
     
     /**

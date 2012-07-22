@@ -12,7 +12,7 @@ class YetiCore
 {
     function __construct()
     {
-        if(!isset($GLOBALS['__YETI_CONTEXT']) && $GLOBALS['__YETI_CONTEXT']['DidLoad'] !== true)
+        if(!isset($GLOBALS['__YETI_CONFIG']) && $GLOBALS['__YETI_CONFIG']['DidLoad'] !== true)
         {
             $this->loadConfig();
         }

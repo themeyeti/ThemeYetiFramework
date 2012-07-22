@@ -19,7 +19,7 @@
 
 /**
  * Core Configuration
- * Location: $__YETI_CONTEXT
+ * Location: $__YETI_CONFIG
  * @var array
  */
 $aCoreConfig = array();
@@ -27,14 +27,14 @@ $aCoreConfig = array();
 /**
  * Web Configuration
  * Stores global page/ui
- * Location: $__YETI_CONTEXT['__WEB']
+ * Location: $__YETI_CONFIG['__WEB']
  */
 $aWebConfig = array();
 
 /**
  * Pages Configuration
  * Stores configurations for each page type
- * Location: $__YETI_CONTEXT['__WEB']['__PAGES']
+ * Location: $__YETI_CONFIG['__WEB']['__PAGES']
  */
 $aPagesConfig = array();
 
@@ -67,15 +67,18 @@ unset($bDidLoad);
  * @var string
  */
 $strWebFramework = "blueprint";
+$strBootstrapPageLocation = "frameworks/index.inc";
 
 // Let's push all the configuration into the web configuration array
 $aWebConfig["WebFramework"] = $strWebFramework;
+$aWebConfig["BootstrapPageLocation"] = $strBootstrapPageLocation;
 
 // Let's set the current array in the core configuration
 $aCoreConfig["__WEB"] = $aWebConfig;
 
 // What has been set, must be unset
-unset($strWebFramework);
+unset($strWebFramework,
+        $strBootstrapPageLocation);
 
 /********************************************************************
  * Standard Core->Web->Pages Configuration Values
@@ -101,18 +104,27 @@ $aPagedPage = array();
 
 // Index Page Configuration
 $strIndexPageType = "index";
-$strIndexPageFileName = "DefaultIndex.inc";
+$strIndexPageFileName = "index.inc";
+$strIndexPageHeadFileName = "head.inc";
+$strIndexPageBodyFileName = "body.inc";
+$strIndexPageTitle = "Index Page Title";
 
 // Let's push all index page configuration
 $aIndexPage["PageType"] = $strIndexPageType;
-$aIndexPage["FileName"] = $strIndexPageFileName;
+$aIndexPage["DefaultFileName"] = $strIndexPageFileName;
+$aIndexPage["PageHeadFileName"] = $strIndexPageHeadFileName;
+$aIndexPage["PageBodyFileName"] = $strIndexPageBodyFileName;
+$aIndexPage["PageTitle"] = $strIndexPageTitle;
 
 // Let's set the Index Array in the Pages config
 $aPagesConfig['INDEX'] = $aIndexPage;
 
 // What has been set, must be unset
 unset($strIndexPageFileName,
-        $strIndexPageType);
+        $strIndexPageType,
+        $strIndexPageHeadFileName,
+        $strIndexPageBodyFileName,
+        $strIndexPageTitle);
 
 
 
@@ -120,6 +132,13 @@ unset($strIndexPageFileName,
  * BE FREE. IT IS SAFE TO EDIT THE BELOW AND RELEASE YOUR INNER YETI
  ********************************************************************/
 
+/**************
+ * MODULES
+ **************/
+
+/**************
+ * FRAMEWORKS
+ **************/
 
 /********************************************************************
  * Persisting the configuration to $GLOBALS
@@ -127,7 +146,7 @@ unset($strIndexPageFileName,
 $aWebConfig['__PAGES'] = $aPagesConfig;
 $aCoreConfig['__WEB'] = $aWebConfig;
 // Setting the global
-$GLOBALS['__YETI_CONTEXT'] = $aCoreConfig;
+$GLOBALS['__YETI_CONFIG'] = $aCoreConfig;
 
 // That was fun! Let's unset all our gar-bage
 unset($aCoreConfig,

@@ -1,2 +1,1 @@
-theme-yeti-core
-===============
+Readme!

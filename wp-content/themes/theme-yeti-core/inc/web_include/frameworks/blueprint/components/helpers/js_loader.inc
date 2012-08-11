@@ -1,4 +1,6 @@
 <?php 
+global $__WEB_CONFIG, $_PAGE_CONFIG;
+
 if (isset($__WEB_CONFIG["Framework"]["JS"])) 
 {
 ?>
@@ -14,7 +16,7 @@ if (isset($__WEB_CONFIG["Framework"]["JS"]))
  }
 ?>
 <?php 
-if (isset($__WEB_CONFIG["Framework"]["CSS"])) 
+if (isset($__WEB_CONFIG["Framework"]["JS"])) 
 {
 ?>
 <!-- Load up the page and plugin specific js -->

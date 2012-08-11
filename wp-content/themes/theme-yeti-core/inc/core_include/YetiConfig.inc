@@ -67,10 +67,12 @@ unset($bDidLoad);
  * @var string
  */
 $strWebFramework = "blueprint";
+$strWebFrameworkConfig = dirname(__FILE__) . "/../web_include/frameworks/blueprint/blueprint_config.inc";
 $strBootstrapPageLocation = "frameworks/index.inc";
 
 // Let's push all the configuration into the web configuration array
 $aWebConfig["WebFramework"] = $strWebFramework;
+$aWebConfig["WebFrameworkConfig"] = $strWebFrameworkConfig;
 $aWebConfig["BootstrapPageLocation"] = $strBootstrapPageLocation;
 
 // Let's set the current array in the core configuration

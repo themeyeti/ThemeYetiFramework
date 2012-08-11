@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <?php
 // Load up the configuration
-global $__WEB_CONFIG;
-global $__PAGE_CONFIG;
+global $__WEB_CONFIG, $__PAGE_CONFIG;
 
 /* 
  * Configuration is stored at runtime, and contains all the configuration for the 

@@ -19,7 +19,10 @@ class YetiCore
     }
     protected function loadConfig()
     {
-        // Load the configuration. . .
+        global $__YETI_CONFIG;
+        // Load the core configuration. . .
         require_once('YetiConfig.inc');
+        // Which tells us where the framework configuration lives
+        require_once($__YETI_CONFIG["__WEB"]["WebFrameworkConfig"]);
     }
 }
